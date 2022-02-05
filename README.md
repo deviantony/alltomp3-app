@@ -31,6 +31,8 @@ npm install
 Go in the `app/` folder and execute `ng serve`.
 Then, in another terminal, in the main folder execute `npm start` (it allows hot-reload of the Angular part).
 
+Set the `ALLTOMP3_DEV=1` env var to start in DEV mode.
+
 ### Building the app
 ```
 cd app/

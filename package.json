@@ -8,7 +8,7 @@
   "license": "GPL-2.0",
   "homepage": "https://alltomp3.org/",
   "dependencies": {
-    "alltomp3": "git+https://github.com/deviantony/alltomp3.git#0.5.0",
+    "alltomp3": "git+https://github.com/deviantony/alltomp3.git#v0.5.1",
     "electron-updater": "~4.2.0",
     "ncp": "~2.0.0",
     "nedb-promise": "~2.0.1",
@@ -83,10 +83,10 @@
     ]
   },
   "scripts": {
-    "start": "ALLTOMP3_DEV=1 electron .",
+    "start": "electron .",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "release": "electron-builder",
-    "postinstall": "electron-builder install-app-deps && node ./install.js"
+    "postinstall": "electron-builder install-app-deps"
   }
 }
