@@ -1,14 +1,14 @@
 {
   "name": "AllToMP3",
-  "version": "0.3.19",
+  "version": "0.4.0",
   "description": "Download YouTube videos in MP3 with tags and lyrics",
   "main": "main.js",
-  "repository": "git@github.com:AllToMP3/alltomp3-app.git",
+  "repository": "git@github.com:deviantony/alltomp3-app.git",
   "author": "Basile Bruneau <basilebruneau@gmail.com>",
   "license": "GPL-2.0",
   "homepage": "https://alltomp3.org/",
   "dependencies": {
-    "alltomp3": "^0.4.5",
+    "alltomp3": "git+https://github.com/deviantony/alltomp3.git#0.5.0",
     "electron-updater": "~4.2.0",
     "ncp": "~2.0.0",
     "nedb-promise": "~2.0.1",

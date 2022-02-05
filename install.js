@@ -1,42 +1,28 @@
-const request = require('request');
 const os = require('os');
 const fs = require('fs');
-const unzip = require('unzip2');
 const platform = os.platform();
-const DIST = './bin';
 
-const urls = {
-  darwin: 'https://dl.bintray.com/ntag/alltomp3/darwin.zip',
-  win32: 'https://dl.bintray.com/ntag/alltomp3/win32.zip',
-  linux: 'https://dl.bintray.com/ntag/alltomp3/linux.zip',
-};
-const files = {
-  darwin: ['ffmpeg', 'fpcalc', 'ffprobe', 'eyeD3/bin/eyeD3'],
-  linux: ['eyeD3/bin/eyeD3'],
-  win32: [],
-};
+// For reference
+// const files = {
+//   darwin: ['ffmpeg', 'fpcalc', 'ffprobe', 'eyeD3/bin/eyeD3'],
+//   linux: ['eyeD3/bin/eyeD3'],
+//   win32: [],
+// };
 
-const dlUnzip = (url, execFiles) => {
-  if (!fs.existsSync(DIST)) {
-    fs.mkdirSync(DIST);
+
+// Windows specific
+// fpcalc.exe can be found at https://github.com/acoustid/chromaprint/releases
+// ffmpeg.exe and ffprobe.exe at https://www.gyan.dev/ffmpeg/builds/
+
+if (platform == "linux") {
+  eyeD3dir = './bin/eyeD3/bin';
+
+  if (!fs.existsSync(eyeD3dir)){
+    fs.mkdirSync(eyeD3dir, { recursive: true });
   }
-  console.log('Downloading binaries...');
-  const dl = request(url).pipe(fs.createWriteStream('./bin.zip'));
-  dl.on('finish', () => {
-    console.log('Unzipping binaries...');
-    const unz = fs.createReadStream('./bin.zip').pipe(unzip.Extract({ path: DIST }));
-    unz.on('finish', () => {
-      execFiles.forEach((file) => {
-        fs.chmodSync(DIST + '/' + file, 0755);
-      });
-      fs.unlinkSync('./bin.zip');
-      console.log('Done!');
-    });
-  });
-};
 
-if (urls[platform]) {
-  dlUnzip(urls[platform], files[platform]);
+  console.warning('EyeD3 binary install not supported yet. Please copy the binary in ./bin/eyeD3/bin manually and make sure the path is ./bin/eyeD3/bin/eyeD3')
 } else {
-  console.warning(`No binaries for your platform ${platform}, that's strange`);
+  console.warning('Binaries are not supported on this platform');
 }
+
