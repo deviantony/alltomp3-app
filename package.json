@@ -1,6 +1,6 @@
 {
   "name": "AllToMP3",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Download YouTube videos in MP3 with tags and lyrics",
   "main": "main.js",
   "repository": "git@github.com:deviantony/alltomp3-app.git",
